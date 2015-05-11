@@ -46,14 +46,16 @@ zss_editor.init = function() {
                                 }
                                 });
 
+    /*
     $(document).on('selectionchange',function(e){
-                   //zss_editor.calculateEditorHeightWithCaretPosition();
-                   //zss_editor.setScrollPosition();
+                   zss_editor.calculateEditorHeightWithCaretPosition();
+                   zss_editor.setScrollPosition();
                    });
     
     $(window).on('scroll', function(e) {
-                 //zss_editor.updateOffset();
+                 zss_editor.updateOffset();
                  });
+     */
     
     // Make sure that when we tap anywhere in the document we focus on the editor
     $(window).on('touchmove', function(e) {
@@ -61,6 +63,7 @@ zss_editor.init = function() {
                  zss_editor.updateScrollOffset = true;
                  zss_editor.setScrollPosition();
                  });
+    
     $(window).on('touchstart', function(e) {
                  zss_editor.isDragging = false;
                  });
@@ -100,7 +103,6 @@ zss_editor.updateOffset = function() {
     {
         window.scrollTo(0, maxOffsetY);
     }
-    
     zss_editor.setScrollPosition();
 }
 
@@ -451,7 +453,7 @@ zss_editor.prepareInsert = function() {
 
 zss_editor.insertImage = function(url, alt) {
     zss_editor.restorerange();
-    var html = '<img src="'+url+'" alt="'+alt+'" />';
+    var html = '<img src="'+url+'" alt="'+alt+'" style="max-width:98%"/>';
     zss_editor.insertHTML(html);
     zss_editor.enabledEditingItems();
 }

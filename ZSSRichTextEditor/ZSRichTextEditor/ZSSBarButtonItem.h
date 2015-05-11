@@ -10,6 +10,5 @@
 
 @interface ZSSBarButtonItem : UIBarButtonItem
 
-@property (nonatomic, strong) NSString *label;
-
+@property (nonatomic, strong) NSString *identifier;
 @end

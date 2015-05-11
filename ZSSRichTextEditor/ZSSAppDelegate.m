@@ -7,7 +7,7 @@
 //
 
 #import "ZSSAppDelegate.h"
-#import "ZSSLargeViewController.h"
+#import "CSEditorViewController.h"
 
 @implementation ZSSAppDelegate
 
@@ -15,7 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.mainViewController = [[ZSSLargeViewController alloc] init];
+    self.mainViewController = [[CSEditorViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
     nav.navigationBar.translucent = NO;
     self.window.rootViewController = nav;

@@ -52,40 +52,39 @@ static NSString * const ZSSRichTextEditorToolbarHideKeyboard = @"hideKeyboard";
 @protocol ZSSRichTextEditorDelegate <NSObject>
 @optional
 
+/*
 - (void)editorDidBeginEditing:(ZSSRichTextEditor *)editorController;
 - (void)editorDidEndEditing:(ZSSRichTextEditor *)editorController;
-- (void)editorDidFinishLoadingDOM:(ZSSRichTextEditor*)editorController;
-- (BOOL)editorShouldDisplaySourceView:(ZSSRichTextEditor *)editorController;
 - (void)editorTextDidChange:(ZSSRichTextEditor *)editorController;
+- (BOOL)editorShouldDisplaySourceView:(ZSSRichTextEditor *)editorController;
+*/
+
+/**
+ *  Received when the user taps on a image in the editor.
+ *
+ *  @param editorController viewController
+ *  @param imageURL         image url, could be local file path or remote url
+ *  @param imageAlt         image alt
+ */
+- (void)editorViewController:(ZSSRichTextEditor *)editorController
+         didSelectedImageURL:(NSString *)imageURL
+                     withAlt:(NSString *)imageAlt;
+
+/**
+ *  Receive when the user taps on a link
+ *
+ *  @param editorController viewController
+ *  @param linkURL          link url
+ *  @param title            link title
+ */
+- (void)editorViewController:(ZSSRichTextEditor *)editorController
+          didSelectedLinkURL:(NSString *)linkURL
+                     withTitle:(NSString *)title;
 
 /**
  *  Scroll event callback with position
  */
 - (void)editorDidScrollWithPosition:(NSInteger)position;
-
-//- (void)editorDidPressMedia:(ZSSRichTextEditor *)editorController;
-//
-///**
-// *	@brief		Received when the user taps on a image in the editor.
-// *
-// *	@param		editorView	The editor view.
-// *	@param		imageId		The id of image of the image that was tapped.
-// *	@param		url			The url of the image that was tapped.
-// *
-// */
-//- (void)editorViewController:(ZSSRichTextEditor*)editorViewController
-//                 imageTapped:(NSString *)imageId
-//                         url:(NSURL *)url;
-//
-///**
-// *	@brief		Received when the local image url is replace by the final image in the editor.
-// *
-// *	@param		editorView	The editor view.
-// *	@param		imageId		The id of image of the image that was tapped.
-// */
-//- (void)editorViewController:(ZSSRichTextEditor*)editorViewController
-//               imageReplaced:(NSString *)imageId;
-
 
 @end
 
@@ -137,6 +136,11 @@ static NSString * const ZSSRichTextEditorToolbarHideKeyboard = @"hideKeyboard";
  *  Color to tint selected items
  */
 @property (nonatomic, strong) UIColor *toolbarItemSelectedTintColor;
+
+/**
+ *  editor editable
+ */
+@property(nonatomic,getter=isEditable) BOOL editable;
 
 /**
  *  Sets the HTML for the entire editor

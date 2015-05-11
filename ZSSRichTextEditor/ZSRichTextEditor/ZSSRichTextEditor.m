@@ -40,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.editable = YES;
     self.editorLoaded = NO;
     self.shouldShowKeyboard = YES;
     self.formatHTML = YES;
@@ -204,6 +205,14 @@
 
 #pragma mark - Editor Interaction
 
+- (void)setEditable:(BOOL)editable
+{
+    _editable = editable;
+    
+    NSString *js = [NSString stringWithFormat:@"document.getElementById('zss_editor_content').setAttribute('contenteditable','%@')", editable ? @"true" : @"false"];
+    [self.editorView stringByEvaluatingJavaScriptFromString:js];
+}
+
 - (void)focusTextEditor {
     self.editorView.keyboardDisplayRequiresUserAction = NO;
     NSString *js = [NSString stringWithFormat:@"zss_editor.focusEditor();"];
@@ -240,7 +249,6 @@
     html = [self tidyHTML:html];
     return html;
 }
-
 
 - (void)insertHTML:(NSString *)html {
     NSString *cleanedHTML = [self removeQuotesFromHTML:html];
@@ -690,7 +698,15 @@
             item.tintColor = [self barButtonItemDefaultColor];
         }
     }//end
+}
+
+- (void)responseObjectTapped {
     
+    if (self.selectedImageURL && [self.delegate respondsToSelector:@selector(editorViewController:didSelectedImageURL:withAlt:)]) {
+        [self.delegate editorViewController:self didSelectedImageURL:self.selectedImageURL withAlt:self.selectedImageAlt];
+    } else if (self.selectedLinkURL && [self.delegate respondsToSelector:@selector(editorViewController:didSelectedLinkURL:withTitle:)]) {
+        [self.delegate editorViewController:self didSelectedLinkURL:self.selectedLinkURL withTitle:self.selectedLinkTitle];
+    }
 }
 
 
@@ -726,7 +742,7 @@
         // We recieved the callback
         NSString *className = [urlString stringByReplacingOccurrencesOfString:@"callback://0/" withString:@""];
         [self updateToolBarWithButtonName:className];
-        
+        [self responseObjectTapped];
     }
 #ifdef DEBUG
     else if ([urlString rangeOfString:@"debug://"].location != NSNotFound) {
@@ -761,7 +777,10 @@
     [self updateHTML];
     if (self.shouldShowKeyboard) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self focusTextEditor];
+            self.editable = _editable;
+            if (_editable) {
+                [self focusTextEditor];
+            }
         });
     }
 }

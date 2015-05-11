@@ -12,69 +12,7 @@
 #import "ZSSBarButtonItem.h"
 #import "HRColorUtil.h"
 #import "ZSSTextView.h"
-
-
-@interface UIWebView (HackishAccessoryHiding)
-@property (nonatomic, assign) BOOL hidesInputAccessoryView;
-@end
-
-@implementation UIWebView (HackishAccessoryHiding)
-
-static const char * const hackishFixClassName = "UIWebBrowserViewMinusAccessoryView";
-static Class hackishFixClass = Nil;
-
-- (UIView *)hackishlyFoundBrowserView {
-    UIScrollView *scrollView = self.scrollView;
-    
-    UIView *browserView = nil;
-    for (UIView *subview in scrollView.subviews) {
-        if ([NSStringFromClass([subview class]) hasPrefix:@"UIWebBrowserView"]) {
-            browserView = subview;
-            break;
-        }
-    }
-    return browserView;
-}
-
-- (id)methodReturningNil {
-    return nil;
-}
-
-- (void)ensureHackishSubclassExistsOfBrowserViewClass:(Class)browserViewClass {
-    if (!hackishFixClass) {
-        Class newClass = objc_allocateClassPair(browserViewClass, hackishFixClassName, 0);
-        newClass = objc_allocateClassPair(browserViewClass, hackishFixClassName, 0);
-        IMP nilImp = [self methodForSelector:@selector(methodReturningNil)];
-        class_addMethod(newClass, @selector(inputAccessoryView), nilImp, "@@:");
-        objc_registerClassPair(newClass);
-        
-        hackishFixClass = newClass;
-    }
-}
-
-- (BOOL) hidesInputAccessoryView {
-    UIView *browserView = [self hackishlyFoundBrowserView];
-    return [browserView class] == hackishFixClass;
-}
-
-- (void) setHidesInputAccessoryView:(BOOL)value {
-    UIView *browserView = [self hackishlyFoundBrowserView];
-    if (browserView == nil) {
-        return;
-    }
-    [self ensureHackishSubclassExistsOfBrowserViewClass:[browserView class]];
-    
-    if (value) {
-        object_setClass(browserView, hackishFixClass);
-    }
-    else {
-        Class normalClass = objc_getClass("UIWebBrowserView");
-        object_setClass(browserView, normalClass);
-    }
-    [browserView reloadInputViews];
-}
-
-@end
+#import "UIWebView+GUIFixes.h"
 
 @interface ZSSRichTextEditor ()
 @property (nonatomic, strong) UIScrollView *toolBarScroll;
@@ -96,6 +34,7 @@ static Class hackishFixClass = Nil;
 @property (nonatomic, strong) NSMutableArray *customZSSBarButtonItems;
 @property (nonatomic, strong) NSString *internalHTML;
 @property (nonatomic) BOOL editorLoaded;
+
 - (NSString *)removeQuotesFromHTML:(NSString *)html;
 - (NSString *)tidyHTML:(NSString *)html;
 - (void)enableToolbarItems:(BOOL)enable;
@@ -128,13 +67,15 @@ static Class hackishFixClass = Nil;
     // Editor View
     self.editorView = [[UIWebView alloc] initWithFrame:frame];
     self.editorView.delegate = self;
-    self.editorView.hidesInputAccessoryView = YES;
-    self.editorView.keyboardDisplayRequiresUserAction = NO;
     self.editorView.scalesPageToFit = YES;
-    self.editorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    self.editorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.editorView.dataDetectorTypes = UIDataDetectorTypeNone;
-    self.editorView.scrollView.bounces = NO;
     self.editorView.backgroundColor = [UIColor whiteColor];
+    self.editorView.opaque = NO;
+    self.editorView.scrollView.bounces = NO;
+    self.editorView.usesGUIFixes = YES;
+    self.editorView.keyboardDisplayRequiresUserAction = NO;
+    self.editorView.scrollView.bounces = YES;
     [self.view addSubview:self.editorView];
     
     // Scrolling View
@@ -180,7 +121,6 @@ static Class hackishFixClass = Nil;
         line.alpha = 0.7f;
         [toolbarCropper addSubview:line];
     }
-    [self.view addSubview:self.toolbarHolder];
     
     // Build the toolbar
     [self buildToolbar];
@@ -519,21 +459,22 @@ static Class hackishFixClass = Nil;
     
     self.toolbar.frame = CGRectMake(0, 0, toolbarWidth, 44);
     self.toolBarScroll.contentSize = CGSizeMake(self.toolbar.frame.size.width, 44);
+    self.editorView.customInputAccessoryView = self.toolbarHolder;
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowOrHide:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowOrHide:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowOrHide:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowOrHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 
@@ -563,7 +504,6 @@ static Class hackishFixClass = Nil;
     if (self.editorLoaded) {
         [self updateHTML];
     }
-    
 }
 
 - (void)updateHTML {
@@ -1082,11 +1022,9 @@ static Class hackishFixClass = Nil;
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    
-    
     NSString *urlString = [[request URL] absoluteString];
-    NSLog(@"web request");
-    NSLog(@"%@", urlString);
+    NSLog(@"web request - %@", urlString);
+
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         return NO;
     } else if ([urlString rangeOfString:@"callback://0/"].location != NSNotFound) {

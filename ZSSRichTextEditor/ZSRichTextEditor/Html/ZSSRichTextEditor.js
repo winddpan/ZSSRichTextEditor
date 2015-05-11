@@ -45,14 +45,14 @@ zss_editor.init = function() {
                                 $('img').removeClass('zs_active');
                                 }
                                 });
-    
+
     $(document).on('selectionchange',function(e){
-                   zss_editor.calculateEditorHeightWithCaretPosition();
-                   zss_editor.setScrollPosition();
+                   //zss_editor.calculateEditorHeightWithCaretPosition();
+                   //zss_editor.setScrollPosition();
                    });
     
     $(window).on('scroll', function(e) {
-                 zss_editor.updateOffset();
+                 //zss_editor.updateOffset();
                  });
     
     // Make sure that when we tap anywhere in the document we focus on the editor
@@ -64,10 +64,20 @@ zss_editor.init = function() {
     $(window).on('touchstart', function(e) {
                  zss_editor.isDragging = false;
                  });
+    
     $(window).on('touchend', function(e) {
-                 if (!zss_editor.isDragging) {
-                 zss_editor.focusEditor();
-                 }
+                     if (!zss_editor.isDragging) {
+                         var tContent =  $('#zss_editor_content');
+
+                         var t = $(e.target);
+                         var tx  = t.position().left;
+                         var ty  = t.position().top;
+                 
+                         //超出文章内容区域，开启编辑模式
+                         if((tx == 0 && ty == 0) || tContent.text() == placeholder) {
+                            zss_editor.focusEditor();
+                         }
+                     }
                  });
     
 }//end
@@ -142,6 +152,7 @@ zss_editor.getCaretYPosition = function() {
     var range = sel.getRangeAt(0);
     var span = document.createElement('span');// something happening here preventing selection of elements
     range.insertNode(span);
+    //range.collapse(false);
     var topPosition = span.offsetTop;
     span.parentNode.removeChild(span);
     return topPosition;
@@ -166,7 +177,7 @@ zss_editor.calculateEditorHeightWithCaretPosition = function() {
         var newPos = c - height + padding - 18;
     }
     
-    window.scrollTo(0, newPos);
+    //window.scrollTo(0, newPos);
 }
 
 zss_editor.backuprange = function(){

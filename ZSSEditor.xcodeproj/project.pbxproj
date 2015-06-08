@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7AB7915A1B25464900C00CEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791591B25464900C00CEC /* main.m */; };
+		7AB7915D1B25464900C00CEC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7915C1B25464900C00CEC /* AppDelegate.m */; };
+		7AB791631B25464900C00CEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791611B25464900C00CEC /* Main.storyboard */; };
+		7AB791651B25464900C00CEC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791641B25464900C00CEC /* Images.xcassets */; };
+		7AB791681B25464900C00CEC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791661B25464900C00CEC /* LaunchScreen.xib */; };
+		7AB791741B25464900C00CEC /* ZSSEditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791731B25464900C00CEC /* ZSSEditorTests.m */; };
+		7AB791A21B25468F00C00CEC /* editor.css in Resources */ = {isa = PBXBuildFile; fileRef = 7AB7917F1B25468F00C00CEC /* editor.css */; };
+		7AB791A31B25468F00C00CEC /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791801B25468F00C00CEC /* editor.html */; };
+		7AB791A41B25468F00C00CEC /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791811B25468F00C00CEC /* jquery.js */; };
+		7AB791A51B25468F00C00CEC /* js-beautifier.js in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791821B25468F00C00CEC /* js-beautifier.js */; };
+		7AB791A61B25468F00C00CEC /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791831B25468F00C00CEC /* ZSSRichTextEditor.js */; };
+		7AB791A71B25468F00C00CEC /* CYRLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791861B25468F00C00CEC /* CYRLayoutManager.m */; };
+		7AB791A81B25468F00C00CEC /* CYRTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791881B25468F00C00CEC /* CYRTextStorage.m */; };
+		7AB791A91B25468F00C00CEC /* CYRTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7918A1B25468F00C00CEC /* CYRTextView.m */; };
+		7AB791AA1B25468F00C00CEC /* CYRToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7918C1B25468F00C00CEC /* CYRToken.m */; };
+		7AB791AB1B25468F00C00CEC /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7918E1B25468F00C00CEC /* HRBrightnessCursor.m */; };
+		7AB791AC1B25468F00C00CEC /* HRCgUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791901B25468F00C00CEC /* HRCgUtil.m */; };
+		7AB791AD1B25468F00C00CEC /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791921B25468F00C00CEC /* HRColorCursor.m */; };
+		7AB791AE1B25468F00C00CEC /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791951B25468F00C00CEC /* HRColorPickerView.m */; };
+		7AB791AF1B25468F00C00CEC /* HRColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791971B25468F00C00CEC /* HRColorPickerViewController.m */; };
+		7AB791B01B25468F00C00CEC /* HRColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791991B25468F00C00CEC /* HRColorUtil.m */; };
+		7AB791B11B25468F00C00CEC /* UIWebView+GUIFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7919B1B25468F00C00CEC /* UIWebView+GUIFixes.m */; };
+		7AB791B21B25468F00C00CEC /* ZSSBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7919D1B25468F00C00CEC /* ZSSBarButtonItem.m */; };
+		7AB791B31B25468F00C00CEC /* ZSSRichTextEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB7919F1B25468F00C00CEC /* ZSSRichTextEditor.m */; };
+		7AB791B41B25468F00C00CEC /* ZSSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791A11B25468F00C00CEC /* ZSSTextView.m */; };
+		7AB791B91B25469600C00CEC /* CSEditorToobarHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791B61B25469600C00CEC /* CSEditorToobarHolder.m */; };
+		7AB791BA1B25469600C00CEC /* CSEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB791B81B25469600C00CEC /* CSEditorViewController.m */; };
+		7AB791BC1B25469F00C00CEC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB791BB1B25469F00C00CEC /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7AB7916E1B25464900C00CEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AB7914C1B25464900C00CEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AB791531B25464900C00CEC;
+			remoteInfo = ZSSEditor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7AB791541B25464900C00CEC /* ZSSEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZSSEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AB791581B25464900C00CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AB791591B25464900C00CEC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7AB7915B1B25464900C00CEC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7AB7915C1B25464900C00CEC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7AB791621B25464900C00CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7AB791641B25464900C00CEC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7AB791671B25464900C00CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7AB7916D1B25464900C00CEC /* ZSSEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZSSEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AB791721B25464900C00CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AB791731B25464900C00CEC /* ZSSEditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSSEditorTests.m; sourceTree = "<group>"; };
+		7AB7917F1B25468F00C00CEC /* editor.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = editor.css; sourceTree = "<group>"; };
+		7AB791801B25468F00C00CEC /* editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = editor.html; sourceTree = "<group>"; };
+		7AB791811B25468F00C00CEC /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
+		7AB791821B25468F00C00CEC /* js-beautifier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "js-beautifier.js"; sourceTree = "<group>"; };
+		7AB791831B25468F00C00CEC /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ZSSRichTextEditor.js; sourceTree = "<group>"; };
+		7AB791851B25468F00C00CEC /* CYRLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRLayoutManager.h; sourceTree = "<group>"; };
+		7AB791861B25468F00C00CEC /* CYRLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRLayoutManager.m; sourceTree = "<group>"; };
+		7AB791871B25468F00C00CEC /* CYRTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRTextStorage.h; sourceTree = "<group>"; };
+		7AB791881B25468F00C00CEC /* CYRTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRTextStorage.m; sourceTree = "<group>"; };
+		7AB791891B25468F00C00CEC /* CYRTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRTextView.h; sourceTree = "<group>"; };
+		7AB7918A1B25468F00C00CEC /* CYRTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRTextView.m; sourceTree = "<group>"; };
+		7AB7918B1B25468F00C00CEC /* CYRToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRToken.h; sourceTree = "<group>"; };
+		7AB7918C1B25468F00C00CEC /* CYRToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRToken.m; sourceTree = "<group>"; };
+		7AB7918D1B25468F00C00CEC /* HRBrightnessCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessCursor.h; sourceTree = "<group>"; };
+		7AB7918E1B25468F00C00CEC /* HRBrightnessCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBrightnessCursor.m; sourceTree = "<group>"; };
+		7AB7918F1B25468F00C00CEC /* HRCgUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCgUtil.h; sourceTree = "<group>"; };
+		7AB791901B25468F00C00CEC /* HRCgUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCgUtil.m; sourceTree = "<group>"; };
+		7AB791911B25468F00C00CEC /* HRColorCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorCursor.h; sourceTree = "<group>"; };
+		7AB791921B25468F00C00CEC /* HRColorCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorCursor.m; sourceTree = "<group>"; };
+		7AB791931B25468F00C00CEC /* HRColorPickerMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerMacros.h; sourceTree = "<group>"; };
+		7AB791941B25468F00C00CEC /* HRColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerView.h; sourceTree = "<group>"; };
+		7AB791951B25468F00C00CEC /* HRColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerView.m; sourceTree = "<group>"; };
+		7AB791961B25468F00C00CEC /* HRColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerViewController.h; sourceTree = "<group>"; };
+		7AB791971B25468F00C00CEC /* HRColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerViewController.m; sourceTree = "<group>"; };
+		7AB791981B25468F00C00CEC /* HRColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorUtil.h; sourceTree = "<group>"; };
+		7AB791991B25468F00C00CEC /* HRColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorUtil.m; sourceTree = "<group>"; };
+		7AB7919A1B25468F00C00CEC /* UIWebView+GUIFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+GUIFixes.h"; sourceTree = "<group>"; };
+		7AB7919B1B25468F00C00CEC /* UIWebView+GUIFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+GUIFixes.m"; sourceTree = "<group>"; };
+		7AB7919C1B25468F00C00CEC /* ZSSBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSBarButtonItem.h; sourceTree = "<group>"; };
+		7AB7919D1B25468F00C00CEC /* ZSSBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSBarButtonItem.m; sourceTree = "<group>"; };
+		7AB7919E1B25468F00C00CEC /* ZSSRichTextEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSRichTextEditor.h; sourceTree = "<group>"; };
+		7AB7919F1B25468F00C00CEC /* ZSSRichTextEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSRichTextEditor.m; sourceTree = "<group>"; };
+		7AB791A01B25468F00C00CEC /* ZSSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSTextView.h; sourceTree = "<group>"; };
+		7AB791A11B25468F00C00CEC /* ZSSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSTextView.m; sourceTree = "<group>"; };
+		7AB791B51B25469600C00CEC /* CSEditorToobarHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSEditorToobarHolder.h; sourceTree = "<group>"; };
+		7AB791B61B25469600C00CEC /* CSEditorToobarHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSEditorToobarHolder.m; sourceTree = "<group>"; };
+		7AB791B71B25469600C00CEC /* CSEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSEditorViewController.h; sourceTree = "<group>"; };
+		7AB791B81B25469600C00CEC /* CSEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSEditorViewController.m; sourceTree = "<group>"; };
+		7AB791BB1B25469F00C00CEC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7AB791511B25464900C00CEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AB7916A1B25464900C00CEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7AB7914B1B25464900C00CEC = {
+			isa = PBXGroup;
+			children = (
+				7AB7917D1B25468F00C00CEC /* ZSRichTextEditor */,
+				7AB791561B25464900C00CEC /* ZSSEditor */,
+				7AB791701B25464900C00CEC /* ZSSEditorTests */,
+				7AB791551B25464900C00CEC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7AB791551B25464900C00CEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AB791541B25464900C00CEC /* ZSSEditor.app */,
+				7AB7916D1B25464900C00CEC /* ZSSEditorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AB791561B25464900C00CEC /* ZSSEditor */ = {
+			isa = PBXGroup;
+			children = (
+				7AB791B51B25469600C00CEC /* CSEditorToobarHolder.h */,
+				7AB791B61B25469600C00CEC /* CSEditorToobarHolder.m */,
+				7AB791B71B25469600C00CEC /* CSEditorViewController.h */,
+				7AB791B81B25469600C00CEC /* CSEditorViewController.m */,
+				7AB7915B1B25464900C00CEC /* AppDelegate.h */,
+				7AB7915C1B25464900C00CEC /* AppDelegate.m */,
+				7AB791611B25464900C00CEC /* Main.storyboard */,
+				7AB791641B25464900C00CEC /* Images.xcassets */,
+				7AB791661B25464900C00CEC /* LaunchScreen.xib */,
+				7AB791571B25464900C00CEC /* Supporting Files */,
+			);
+			path = ZSSEditor;
+			sourceTree = "<group>";
+		};
+		7AB791571B25464900C00CEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AB791BB1B25469F00C00CEC /* Default-568h@2x.png */,
+				7AB791581B25464900C00CEC /* Info.plist */,
+				7AB791591B25464900C00CEC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AB791701B25464900C00CEC /* ZSSEditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AB791731B25464900C00CEC /* ZSSEditorTests.m */,
+				7AB791711B25464900C00CEC /* Supporting Files */,
+			);
+			path = ZSSEditorTests;
+			sourceTree = "<group>";
+		};
+		7AB791711B25464900C00CEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AB791721B25464900C00CEC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AB7917D1B25468F00C00CEC /* ZSRichTextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				7AB7917E1B25468F00C00CEC /* Html */,
+				7AB791841B25468F00C00CEC /* Third Party */,
+				7AB7919A1B25468F00C00CEC /* UIWebView+GUIFixes.h */,
+				7AB7919B1B25468F00C00CEC /* UIWebView+GUIFixes.m */,
+				7AB7919C1B25468F00C00CEC /* ZSSBarButtonItem.h */,
+				7AB7919D1B25468F00C00CEC /* ZSSBarButtonItem.m */,
+				7AB7919E1B25468F00C00CEC /* ZSSRichTextEditor.h */,
+				7AB7919F1B25468F00C00CEC /* ZSSRichTextEditor.m */,
+				7AB791A01B25468F00C00CEC /* ZSSTextView.h */,
+				7AB791A11B25468F00C00CEC /* ZSSTextView.m */,
+			);
+			path = ZSRichTextEditor;
+			sourceTree = "<group>";
+		};
+		7AB7917E1B25468F00C00CEC /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				7AB7917F1B25468F00C00CEC /* editor.css */,
+				7AB791801B25468F00C00CEC /* editor.html */,
+				7AB791811B25468F00C00CEC /* jquery.js */,
+				7AB791821B25468F00C00CEC /* js-beautifier.js */,
+				7AB791831B25468F00C00CEC /* ZSSRichTextEditor.js */,
+			);
+			path = Html;
+			sourceTree = "<group>";
+		};
+		7AB791841B25468F00C00CEC /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				7AB791851B25468F00C00CEC /* CYRLayoutManager.h */,
+				7AB791861B25468F00C00CEC /* CYRLayoutManager.m */,
+				7AB791871B25468F00C00CEC /* CYRTextStorage.h */,
+				7AB791881B25468F00C00CEC /* CYRTextStorage.m */,
+				7AB791891B25468F00C00CEC /* CYRTextView.h */,
+				7AB7918A1B25468F00C00CEC /* CYRTextView.m */,
+				7AB7918B1B25468F00C00CEC /* CYRToken.h */,
+				7AB7918C1B25468F00C00CEC /* CYRToken.m */,
+				7AB7918D1B25468F00C00CEC /* HRBrightnessCursor.h */,
+				7AB7918E1B25468F00C00CEC /* HRBrightnessCursor.m */,
+				7AB7918F1B25468F00C00CEC /* HRCgUtil.h */,
+				7AB791901B25468F00C00CEC /* HRCgUtil.m */,
+				7AB791911B25468F00C00CEC /* HRColorCursor.h */,
+				7AB791921B25468F00C00CEC /* HRColorCursor.m */,
+				7AB791931B25468F00C00CEC /* HRColorPickerMacros.h */,
+				7AB791941B25468F00C00CEC /* HRColorPickerView.h */,
+				7AB791951B25468F00C00CEC /* HRColorPickerView.m */,
+				7AB791961B25468F00C00CEC /* HRColorPickerViewController.h */,
+				7AB791971B25468F00C00CEC /* HRColorPickerViewController.m */,
+				7AB791981B25468F00C00CEC /* HRColorUtil.h */,
+				7AB791991B25468F00C00CEC /* HRColorUtil.m */,
+			);
+			path = "Third Party";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7AB791531B25464900C00CEC /* ZSSEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AB791771B25464900C00CEC /* Build configuration list for PBXNativeTarget "ZSSEditor" */;
+			buildPhases = (
+				7AB791501B25464900C00CEC /* Sources */,
+				7AB791511B25464900C00CEC /* Frameworks */,
+				7AB791521B25464900C00CEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZSSEditor;
+			productName = ZSSEditor;
+			productReference = 7AB791541B25464900C00CEC /* ZSSEditor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7AB7916C1B25464900C00CEC /* ZSSEditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AB7917A1B25464900C00CEC /* Build configuration list for PBXNativeTarget "ZSSEditorTests" */;
+			buildPhases = (
+				7AB791691B25464900C00CEC /* Sources */,
+				7AB7916A1B25464900C00CEC /* Frameworks */,
+				7AB7916B1B25464900C00CEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AB7916F1B25464900C00CEC /* PBXTargetDependency */,
+			);
+			name = ZSSEditorTests;
+			productName = ZSSEditorTests;
+			productReference = 7AB7916D1B25464900C00CEC /* ZSSEditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7AB7914C1B25464900C00CEC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Cimu;
+				TargetAttributes = {
+					7AB791531B25464900C00CEC = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					7AB7916C1B25464900C00CEC = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 7AB791531B25464900C00CEC;
+					};
+				};
+			};
+			buildConfigurationList = 7AB7914F1B25464900C00CEC /* Build configuration list for PBXProject "ZSSEditor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7AB7914B1B25464900C00CEC;
+			productRefGroup = 7AB791551B25464900C00CEC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7AB791531B25464900C00CEC /* ZSSEditor */,
+				7AB7916C1B25464900C00CEC /* ZSSEditorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7AB791521B25464900C00CEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AB791A41B25468F00C00CEC /* jquery.js in Resources */,
+				7AB791A61B25468F00C00CEC /* ZSSRichTextEditor.js in Resources */,
+				7AB791BC1B25469F00C00CEC /* Default-568h@2x.png in Resources */,
+				7AB791A21B25468F00C00CEC /* editor.css in Resources */,
+				7AB791A31B25468F00C00CEC /* editor.html in Resources */,
+				7AB791631B25464900C00CEC /* Main.storyboard in Resources */,
+				7AB791681B25464900C00CEC /* LaunchScreen.xib in Resources */,
+				7AB791651B25464900C00CEC /* Images.xcassets in Resources */,
+				7AB791A51B25468F00C00CEC /* js-beautifier.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AB7916B1B25464900C00CEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7AB791501B25464900C00CEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AB791B41B25468F00C00CEC /* ZSSTextView.m in Sources */,
+				7AB791B31B25468F00C00CEC /* ZSSRichTextEditor.m in Sources */,
+				7AB791AB1B25468F00C00CEC /* HRBrightnessCursor.m in Sources */,
+				7AB791AD1B25468F00C00CEC /* HRColorCursor.m in Sources */,
+				7AB791A71B25468F00C00CEC /* CYRLayoutManager.m in Sources */,
+				7AB791B11B25468F00C00CEC /* UIWebView+GUIFixes.m in Sources */,
+				7AB791BA1B25469600C00CEC /* CSEditorViewController.m in Sources */,
+				7AB791A81B25468F00C00CEC /* CYRTextStorage.m in Sources */,
+				7AB791AC1B25468F00C00CEC /* HRCgUtil.m in Sources */,
+				7AB791A91B25468F00C00CEC /* CYRTextView.m in Sources */,
+				7AB791B21B25468F00C00CEC /* ZSSBarButtonItem.m in Sources */,
+				7AB791AF1B25468F00C00CEC /* HRColorPickerViewController.m in Sources */,
+				7AB791B91B25469600C00CEC /* CSEditorToobarHolder.m in Sources */,
+				7AB791AA1B25468F00C00CEC /* CYRToken.m in Sources */,
+				7AB7915D1B25464900C00CEC /* AppDelegate.m in Sources */,
+				7AB791B01B25468F00C00CEC /* HRColorUtil.m in Sources */,
+				7AB7915A1B25464900C00CEC /* main.m in Sources */,
+				7AB791AE1B25468F00C00CEC /* HRColorPickerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AB791691B25464900C00CEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AB791741B25464900C00CEC /* ZSSEditorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7AB7916F1B25464900C00CEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AB791531B25464900C00CEC /* ZSSEditor */;
+			targetProxy = 7AB7916E1B25464900C00CEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7AB791611B25464900C00CEC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AB791621B25464900C00CEC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7AB791661B25464900C00CEC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AB791671B25464900C00CEC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7AB791751B25464900C00CEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7AB791761B25464900C00CEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7AB791781B25464900C00CEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ZSSEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7AB791791B25464900C00CEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ZSSEditor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7AB7917B1B25464900C00CEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ZSSEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZSSEditor.app/ZSSEditor";
+			};
+			name = Debug;
+		};
+		7AB7917C1B25464900C00CEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ZSSEditorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZSSEditor.app/ZSSEditor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7AB7914F1B25464900C00CEC /* Build configuration list for PBXProject "ZSSEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AB791751B25464900C00CEC /* Debug */,
+				7AB791761B25464900C00CEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AB791771B25464900C00CEC /* Build configuration list for PBXNativeTarget "ZSSEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AB791781B25464900C00CEC /* Debug */,
+				7AB791791B25464900C00CEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7AB7917A1B25464900C00CEC /* Build configuration list for PBXNativeTarget "ZSSEditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AB7917B1B25464900C00CEC /* Debug */,
+				7AB7917C1B25464900C00CEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7AB7914C1B25464900C00CEC /* Project object */;
+}

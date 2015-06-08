@@ -18,20 +18,12 @@ zss_editor.isDragging = false;
 // The current selection
 zss_editor.currentSelection;
 
-// The current editing image
-zss_editor.currentEditingImage;
-
 // The current editing link
 zss_editor.currentEditingLink;
 
 // The objects that are enabled
 zss_editor.enabledItems = {};
 
-// Height of content window, will be set by viewController
-zss_editor.contentHeight = 244;
-
-// Sets to true when extra footer gap shows and requires to hide
-zss_editor.updateScrollOffset = false;
 
 zss_editor.isInput = false;
 
@@ -41,28 +33,19 @@ zss_editor.isInput = false;
 zss_editor.init = function() {
     
     document.execCommand("defaultParagraphSeparator", false, "p");
-
-    $('#zss_editor_content').on('touchend', function(e) {
-                                zss_editor.enabledEditingItems();
-                                var clicked = $(e.target);
-                                if (!clicked.hasClass('zs_active')) {
-                                $('img').removeClass('zs_active');
-                                }
+    
+    $(document).bind('input', function(e) {
+                                zss_editor.isInput = true;
+                                zss_editor.callbackInput(e);
                                 });
-    
-    $('#zss_editor_content').bind('input', function(e) {
-                                 zss_editor.isInput = true;
-                                 zss_editor.callbackInput(e);
-                                 });
-    
+
     // input肯定会调用selectionchange？
     $(document).on('selectionchange',function(e){
-                                   if  (!zss_editor.isInput) {
-                                        zss_editor.enabledEditingItems();
-                                   }
-                                   zss_editor.isInput = false;
+                                if  (!zss_editor.isInput) {
+                                    zss_editor.enabledEditingItems();
+                                }
+                                zss_editor.isInput = false;
                                 });
-
     
     // Make sure that when we tap anywhere in the document we focus on the editor
     $(window).on('touchmove', function(e) {
@@ -83,11 +66,13 @@ zss_editor.init = function() {
                      var ty  = t.position().top;
 
                      zss_editor.setEditable('true')
-
+                     
                      if(nodeName == 'img') {
                          if(!zss_editor.hasFocus()) {
-                             //非编辑状态，开启图片预览回调
-                             zss_editor.setEditable('false');
+                            //非编辑状态，开启图片预览回调
+                            zss_editor.setEditable('false');
+                            var meta = zss_editor.extractImageMeta( e.target );
+                            window.location = "image://" + encodeURIComponent(meta.toString());
                          }
                      }
                       //超出文章内容区域，开启编辑模式
@@ -118,6 +103,7 @@ zss_editor.extractImageMeta = function( imageNode ) {
     rd.x -= window.pageXOffset;
     rd.y -= window.pageYOffset;
     
+
     width = $(imageNode).attr( 'width' );
     height = $(imageNode).attr( 'height' );
 
@@ -128,9 +114,9 @@ zss_editor.extractImageMeta = function( imageNode ) {
         height = imageNode.height || imageNode.naturalHeight;
     }
     
-    items.push('image:' + $( imageNode ).attr( 'src' ) || '');
+    items.push('src:' + $( imageNode ).attr( 'src' ) || '');
     if ($( imageNode ).attr( 'alt' ) !== undefined) {
-        items.push('image-alt:'+$( imageNode ).attr( 'alt' ));
+        items.push('alt:'+$( imageNode ).attr( 'alt' ));
     }
     items.push('x:'+rd.x);
     items.push('y:'+rd.y);
@@ -194,28 +180,6 @@ zss_editor.getCaretYPosition = function() {
     var topPosition = span.offsetTop;
     span.parentNode.removeChild(span);
     return topPosition;
-}
-
-zss_editor.calculateEditorHeightWithCaretPosition = function() {
-    
-    var padding = 0;
-    var c = zss_editor.getCaretYPosition();
-    var e = document.getElementById('zss_editor_content');
-    
-    var editor = $('#zss_editor_content');
-    
-    var offsetY = window.document.body.scrollTop;
-    var height = zss_editor.contentHeight;
-    
-    var newPos = window.pageYOffset;
-    
-    if (c < offsetY) {
-        newPos = c;
-    } else if (c > (offsetY + height - padding)) {
-        var newPos = c - height + padding - 18;
-    }
-    return c;
-    //window.scrollTo(0, newPos);
 }
 
 zss_editor.backuprange = function(){
@@ -436,19 +400,6 @@ zss_editor.updateLink = function(url, title) {
     
 }//end
 
-zss_editor.updateImage = function(url, alt) {
-    
-    zss_editor.restorerange();
-    
-    if (zss_editor.currentEditingImage) {
-        var c = zss_editor.currentEditingImage;
-        c.attr('src', url);
-        c.attr('alt', alt);
-    }
-    zss_editor.enabledEditingItems();
-    
-}//end
-
 zss_editor.unlink = function() {
     
     if (zss_editor.currentEditingLink) {
@@ -561,7 +512,6 @@ zss_editor.isCommandEnabled = function(commandName) {
 
 zss_editor.enabledEditingItems = function(e) {
     
-    console.log('enabledEditingItems');
     var items = [];
     if (zss_editor.isCommandEnabled('bold')) {
         items.push('bold');
@@ -606,11 +556,6 @@ zss_editor.enabledEditingItems = function(e) {
     if (formatBlock.length > 0) {
         items.push(formatBlock);
     }
-    // Images
-    $('img').bind('touchstart', function(e) {
-                  $('img').removeClass('zs_active');
-                  $(this).addClass('zs_active');
-                  });
     
     // Use jQuery to figure out those that are not supported
     if (typeof(e) != "undefined") {
@@ -644,17 +589,6 @@ zss_editor.enabledEditingItems = function(e) {
         // Blockquote
         if (nodeName == 'blockquote') {
             items.push('indent');
-        }
-
-        // Image
-        if (nodeName == 'img') {
-            zss_editor.currentEditingImage = t;
-            if(!zss_editor.hasFocus() && !zss_editor.isDragging) {
-                var meta = zss_editor.extractImageMeta( e.target );
-                items.push(meta);
-            }
-        } else {
-            zss_editor.currentEditingImage = null;
         }
         
     }

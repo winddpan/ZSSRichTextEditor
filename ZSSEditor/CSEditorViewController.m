@@ -20,6 +20,7 @@
     [super viewDidLoad];
     self.title = @"Large";
     self.delegate = self;
+    //self.shouldShowKeyboard = YES;
     
     CSEditorToobarHolder *toolbar = [[CSEditorToobarHolder alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -30,7 +31,7 @@
     
     // HTML Content to set in the editor
     NSString *html = @"<h1>Large Editor</h1>"
-    "<img src=\"http://g.hiphotos.baidu.com/image/w%3D2048/sign=ce557a47347adab43dd01c43bfecb21c/503d269759ee3d6d63b74ea441166d224f4ade68.jpg\"/>"
+    //"<img src=\"http://g.hiphotos.baidu.com/image/w%3D2048/sign=ce557a47347adab43dd01c43bfecb21c/503d269759ee3d6d63b74ea441166d224f4ade68.jpg\"/>"
     "<img src=\"http://d.youth.cn/tpxw_35291/201505/W020150503294863773411.jpg\"/>"
     "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at enim at nibh pulvinar sagittis eu non lacus. Quisque suscipit tempor urna vel pretium. Curabitur id enim auctor, cursus elit ac, porttitor sem. Ut suscipit purus odio, vitae sollicitudin sapien placerat in. Duis adipiscing urna id viverra tincidunt. Duis sit amet adipiscing justo, vitae facilisis ipsum. Vivamus scelerisque justo ut libero dictum, id tempor ipsum tempus. Nam nec dui dapibus, tristique dolor et, sollicitudin enim. Nullam sagittis arcu tortor, mollis porta mi laoreet ac. Proin lobortis bibendum urna, in ultrices dolor hendrerit quis. Morbi felis quam, luctus nec suscipit porttitor, lacinia vitae velit. Nulla ultricies pellentesque porta. <strong>Suspendisse suscipit sagittis metus non rhoncus</strong>.</p>";
     

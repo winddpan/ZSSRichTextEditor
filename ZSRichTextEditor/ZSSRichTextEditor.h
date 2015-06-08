@@ -207,10 +207,13 @@ static NSString * const ZSSRichTextEditorToolbarHideKeyboard = @"hideKeyboard";
 - (void)setupToolbarHolder:(UIView *)toolbarHolder withItems:(NSArray *)items;
 
 /**
- *  Should Call before Insert image or link when you lose focus
+ *  Call before Insert image or link to store caret selection
  */
 - (void)prepareForInsert;
 
+/**
+ *  Call to restore caret selection
+ */
 - (void)finishedInsert;
 
 /**
@@ -265,7 +268,7 @@ static NSString * const ZSSRichTextEditorToolbarHideKeyboard = @"hideKeyboard";
 - (void)dismissAlertView;
 
 /**
- *  After init html content, determine content did editted
+ *  After init html content, determine content did editted and changed
  *
  *  @return isEditted
  */

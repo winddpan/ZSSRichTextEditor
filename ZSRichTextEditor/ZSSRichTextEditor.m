@@ -125,12 +125,6 @@
     
 }
 
-- (void)setContentHeight:(float)contentHeight {
-    
-    NSString *js = [NSString stringWithFormat:@"zss_editor.contentHeight = %f;", contentHeight];
-    [self.editorView stringByEvaluatingJavaScriptFromString:js];
-}
-
 - (void)setupToolbarHolder:(UIView *)toolbarHolder withItems:(NSArray *)items
 {
     _toolbarHolder = toolbarHolder;
@@ -662,16 +656,29 @@
     [self.editorView stringByEvaluatingJavaScriptFromString:trigger];
 }
 
-
-- (void)updateImage:(NSString *)url alt:(NSString *)alt {
-    NSString *trigger = [NSString stringWithFormat:@"zss_editor.updateImage(\"%@\", \"%@\");", url, alt];
-    [self.editorView stringByEvaluatingJavaScriptFromString:trigger];
+- (void)callBackSelectedImageWithMeta:(NSString *)metaStr {
+    
+    NSString *decodeStr = [metaStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSArray *itemNames = [decodeStr componentsSeparatedByString:@","];
+    NSMutableDictionary *meta = [NSMutableDictionary dictionary];
+    [itemNames enumerateObjectsUsingBlock:^(NSString *item, NSUInteger idx, BOOL *stop) {
+        NSArray *p = [item componentsSeparatedByString:@":"];
+        if (p.count >= 2) {
+            NSMutableArray *temp = [NSMutableArray arrayWithArray:p];
+            [temp removeObjectAtIndex:0];
+            [meta setObject:[temp componentsJoinedByString:@":"] forKey:p[0]];
+        }
+    }];
+    
+    NSString *src = meta[@"src"];
+    [self didSelectedImageURL:src withMeta:meta];
+    if ([self.delegate respondsToSelector:@selector(editorViewController:didSelectedImageURL:withMeta:)]) {
+        [self.delegate editorViewController:self didSelectedImageURL:src withMeta:meta];
+    }
 }
 
 - (void)updateToolBarWithButtonName:(NSString *)name {
     
-    NSString *selectedImageURL = nil;
-
     // Items that are enabled
     NSArray *itemNames = [name componentsSeparatedByString:@","];
     
@@ -684,9 +691,6 @@
             self.selectedLinkURL = [linkItem stringByReplacingOccurrencesOfString:@"link:" withString:@""];
         } else if ([linkItem hasPrefix:@"link-title:"]) {
             self.selectedLinkTitle = [self stringByDecodingURLFormat:[linkItem stringByReplacingOccurrencesOfString:@"link-title:" withString:@""]];
-        } else if ([linkItem hasPrefix:@"image:"]) {
-            updatedItem = @"image";
-            selectedImageURL = [linkItem stringByReplacingOccurrencesOfString:@"image:" withString:@""];
         } else if ([linkItem hasPrefix:@"image-alt:"]) {
             //self.selectedImageAlt = [self stringByDecodingURLFormat:[linkItem stringByReplacingOccurrencesOfString:@"image-alt:" withString:@""]];
         } else {
@@ -694,22 +698,6 @@
             self.selectedLinkTitle = nil;
         }
         [itemsModified addObject:updatedItem];
-    }
-    
-    if (selectedImageURL) {
-        NSMutableDictionary *meta = [NSMutableDictionary dictionary];
-        [itemNames enumerateObjectsUsingBlock:^(NSString *item, NSUInteger idx, BOOL *stop) {
-            NSArray *p = [item componentsSeparatedByString:@":"];
-            if (p.count >= 2) {
-                NSMutableArray *temp = [NSMutableArray arrayWithArray:p];
-                [temp removeObjectAtIndex:0];
-                [meta setObject:[temp componentsJoinedByString:@":"] forKey:p[0]];
-            }
-        }];
-        [self didSelectedImageURL:selectedImageURL withMeta:meta];
-        if ([self.delegate respondsToSelector:@selector(editorViewController:didSelectedImageURL:withMeta:)]) {
-            [self.delegate editorViewController:self didSelectedImageURL:selectedImageURL withMeta:meta];
-        }
     }
     if (self.selectedLinkURL && [self.delegate respondsToSelector:@selector(editorViewController:didSelectedLinkURL:withTitle:)]) {
         [self didSelectedLinkURL:self.selectedLinkURL withTitle:self.selectedLinkTitle];
@@ -762,6 +750,9 @@
         // We recieved the callback
         NSString *className = [urlString stringByReplacingOccurrencesOfString:@"callback://0/" withString:@""];
         [self updateToolBarWithButtonName:className];
+    } else if ([urlString rangeOfString:@"image://"].location == 0) {
+        NSString *meta = [urlString stringByReplacingOccurrencesOfString:@"image://" withString:@""];
+        [self callBackSelectedImageWithMeta:meta];
     }
 #ifdef DEBUG
     else if ([urlString rangeOfString:@"debug://"].location != NSNotFound) {
@@ -838,11 +829,11 @@
  */
 - (void)scrollToCaretAnimated:(BOOL)animated
 {
-    NSString *offset = [self.editorView stringByEvaluatingJavaScriptFromString:@"zss_editor.calculateEditorHeightWithCaretPosition()"];
+    NSString *offset = [self.editorView stringByEvaluatingJavaScriptFromString:@"zss_editor.getCaretYPosition()"];
     
     CGRect viewport = [self viewport];
     CGFloat caretYOffset = [offset integerValue];
-    CGFloat lineHeight = 21;
+    CGFloat lineHeight = 0;
     CGFloat offsetBottom = caretYOffset + lineHeight;
     
     BOOL mustScroll = (caretYOffset < viewport.origin.y

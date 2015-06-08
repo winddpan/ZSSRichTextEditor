@@ -54,6 +54,8 @@
             } else {
                 item.identifier = identifier;
             }
+            [item setTintColor:[UIColor greenColor] forState:UIControlStateNormal];
+            [item setTintColor:[UIColor redColor] forState:UIControlStateSelected];
         }];
         [toolbar setItems:toolbarItems animated:NO];
         
